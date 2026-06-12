@@ -1976,8 +1976,7 @@ body {
     linear-gradient(to right, rgba(9, 9, 11, 0.015) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(9, 9, 11, 0.015) 1px, transparent 1px),
     linear-gradient(to top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.5) 100%),
-    url('lady_pointing.png'),
-    url('../../../.gemini/antigravity-ide/brain/355e5b17-faf6-43aa-99fa-8cc8606faf05/lady_pointing_to_comment_1781095494927.png');
+    url('lady_pointing.png');
   background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
   background-position: left top, left top, center center, center center, center center;
   background-size: 20px 20px, 20px 20px, 100% 100%, cover, cover;
