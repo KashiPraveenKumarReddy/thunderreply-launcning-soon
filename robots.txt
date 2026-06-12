@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /supabase_trigger.sql
+
+Sitemap: https://thunderreply.com/sitemap.xml
