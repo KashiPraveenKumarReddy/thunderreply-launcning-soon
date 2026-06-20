@@ -1,58 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // --- Header Scroll Animation (Collapse based on Scroll Direction - High Performance) ---
-  const navbarWrapper = document.querySelector('.navbar-wrapper');
-  let lastScrollY = window.scrollY;
-  let isScrolledState = false;
-  let isScrollTicking = false;
 
-  function handleNavbarScroll() {
-    if (!navbarWrapper) {
-      isScrollTicking = false;
-      return;
-    }
-    
-    const currentScrollY = window.scrollY;
-    const scrollDifference = currentScrollY - lastScrollY;
-
-    // 1. Ignore tiny scrolls (jitter protection for finger tremors / momentum bounce)
-    if (Math.abs(scrollDifference) < 6 && currentScrollY > 15) {
-      isScrollTicking = false;
-      return;
-    }
-
-    if (currentScrollY <= 15) {
-      // Always show full name at the very top of the page
-      if (isScrolledState) {
-        isScrolledState = false;
-        navbarWrapper.classList.remove('scrolled');
-      }
-    } else if (currentScrollY > lastScrollY) {
-      // Scrolling Down -> Show TR (collapse)
-      if (!isScrolledState) {
-        isScrolledState = true;
-        navbarWrapper.classList.add('scrolled');
-      }
-    } else if (currentScrollY < lastScrollY) {
-      // Scrolling Up -> Show Full Name (expand)
-      if (isScrolledState) {
-        isScrolledState = false;
-        navbarWrapper.classList.remove('scrolled');
-      }
-    }
-
-    lastScrollY = currentScrollY;
-    isScrollTicking = false;
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!isScrollTicking) {
-      window.requestAnimationFrame(handleNavbarScroll);
-      isScrollTicking = true;
-    }
-  }, { passive: true });
-
-  handleNavbarScroll(); // Initial run
 
   // --- Scroll-based Entrance Animations ---
   const animElements = document.querySelectorAll('.anim-fade-up');
@@ -911,4 +859,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (menuBtn) menuBtn.classList.remove('is-active');
     }
   });
+
+  // Scroll event listener to toggle .scrolled class on navbar-wrapper
+  const navbarWrapper = document.querySelector('.navbar-wrapper');
+  if (navbarWrapper) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbarWrapper.classList.add('scrolled');
+      } else {
+        navbarWrapper.classList.remove('scrolled');
+      }
+    }, { passive: true });
+  }
 });

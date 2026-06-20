@@ -28,7 +28,7 @@ BEGIN
         'Content-Type', 'application/json'
       ),
       body := jsonb_build_object(
-        'from', 'ThunderReply <welcome@thunderreply.com>', -- This sends from your verified domain
+        'from', 'ThunderReply <hello@thunderreply.com>', -- This sends from your verified domain
         'to', jsonb_build_array(NEW.email),
         'reply_to', 'YOUR_PERSONAL_OR_SUPPORT_EMAIL@gmail.com', -- Replace with your personal/support email address where you want to receive replies!
         'subject', 'You are in! Welcome to the ThunderReply Waitlist 🚀',
